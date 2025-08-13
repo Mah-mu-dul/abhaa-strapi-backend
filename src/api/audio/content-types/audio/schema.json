@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "audios",
+  "info": {
+    "singularName": "audio",
+    "pluralName": "audios",
+    "displayName": "Audio"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "file": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "audios"
+      ]
+    },
+    "corpus": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::corpus.corpus",
+      "inversedBy": "audios"
+    }
+  }
+}

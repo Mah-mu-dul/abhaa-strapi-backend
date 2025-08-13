@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "subtitles",
+  "info": {
+    "singularName": "subtitle",
+    "pluralName": "subtitles",
+    "displayName": "Subtitle"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "start": {
+      "type": "string"
+    },
+    "end": {
+      "type": "string"
+    },
+    "original": {
+      "type": "string"
+    },
+    "translation": {
+      "type": "string"
+    },
+    "corpus": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::corpus.corpus",
+      "inversedBy": "subtitles"
+    },
+    "word_glosses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::word-gloss.word-gloss",
+      "mappedBy": "subtitle"
+    }
+  }
+}

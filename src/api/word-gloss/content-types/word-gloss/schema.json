@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "word_glosses",
+  "info": {
+    "singularName": "word-gloss",
+    "pluralName": "word-glosses",
+    "displayName": "WordGloss"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "word": {
+      "type": "string"
+    },
+    "gloss": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::subtitle.subtitle",
+      "inversedBy": "word_glosses"
+    }
+  }
+}
