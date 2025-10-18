@@ -579,10 +579,10 @@ export interface ApiSubtitleSubtitle extends Struct.CollectionTypeSchema {
       'api::subtitle.subtitle'
     > &
       Schema.Attribute.Private;
-    original: Schema.Attribute.String;
+    original: Schema.Attribute.Text;
     publishedAt: Schema.Attribute.DateTime;
     start: Schema.Attribute.String;
-    translation: Schema.Attribute.String;
+    translation: Schema.Attribute.Text;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

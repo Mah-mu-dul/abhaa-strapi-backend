@@ -18,10 +18,10 @@
       "type": "string"
     },
     "original": {
-      "type": "string"
+      "type": "text"
     },
     "translation": {
-      "type": "string"
+      "type": "text"
     },
     "corpus": {
       "type": "relation",
