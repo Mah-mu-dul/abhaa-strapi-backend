@@ -527,6 +527,38 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiJsonEntryJsonEntry extends Struct.CollectionTypeSchema {
+  collectionName: 'json_entries';
+  info: {
+    displayName: 'JSON Entry';
+    pluralName: 'json-entries';
+    singularName: 'json-entry';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    json: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    language: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::json-entry.json-entry'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiSpeakerSpeaker extends Struct.CollectionTypeSchema {
   collectionName: 'speakers';
   info: {
@@ -1137,6 +1169,7 @@ declare module '@strapi/strapi' {
       'api::corpus.corpus': ApiCorpusCorpus;
       'api::genre.genre': ApiGenreGenre;
       'api::global.global': ApiGlobalGlobal;
+      'api::json-entry.json-entry': ApiJsonEntryJsonEntry;
       'api::speaker.speaker': ApiSpeakerSpeaker;
       'api::subtitle.subtitle': ApiSubtitleSubtitle;
       'api::word-gloss.word-gloss': ApiWordGlossWordGloss;
