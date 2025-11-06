@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "the_futures",
+  "info": {
+    "singularName": "the-future",
+    "pluralName": "the-futures",
+    "displayName": "The Future"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "issd": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "editors": {
+      "type": "text"
+    },
+    "pdf": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "cover": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "articles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::article.article",
+      "mappedBy": "the_future"
+    }
+  }
+}

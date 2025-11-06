@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tfi_blogs",
+  "info": {
+    "singularName": "tfi-blog",
+    "pluralName": "tfi-blogs",
+    "displayName": "TFI blog"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "author": {
+      "type": "string"
+    },
+    "author_bio": {
+      "type": "text"
+    },
+    "published": {
+      "type": "date"
+    },
+    "content": {
+      "type": "richtext"
+    }
+  }
+}

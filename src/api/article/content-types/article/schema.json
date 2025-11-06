@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "articles",
+  "info": {
+    "singularName": "article",
+    "pluralName": "articles",
+    "displayName": "Article"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "the_future": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::the-future.the-future",
+      "inversedBy": "articles"
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "reference": {
+      "type": "richtext"
+    }
+  }
+}
