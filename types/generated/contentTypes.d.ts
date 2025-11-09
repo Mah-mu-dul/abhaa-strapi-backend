@@ -423,6 +423,7 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
       'api::article.article'
     > &
       Schema.Attribute.Private;
+    order: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
     reference: Schema.Attribute.RichText;
     the_future: Schema.Attribute.Relation<
@@ -738,23 +739,20 @@ export interface ApiTheFutureTheFuture extends Struct.CollectionTypeSchema {
   };
   attributes: {
     articles: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>;
-    cover: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
+    cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
     editors: Schema.Attribute.Text;
-    issd: Schema.Attribute.String;
+    issn: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::the-future.the-future'
     > &
       Schema.Attribute.Private;
-    pdf: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    pdf: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
