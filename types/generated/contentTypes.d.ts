@@ -695,6 +695,41 @@ export interface ApiSubtitleSubtitle extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiTfiAuthorTfiAuthor extends Struct.CollectionTypeSchema {
+  collectionName: 'tfi_authors';
+  info: {
+    displayName: 'TFI Author';
+    pluralName: 'tfi-authors';
+    singularName: 'tfi-author';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    bio: Schema.Attribute.Text;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    current_status: Schema.Attribute.Enumeration<['Active', 'Inactive']>;
+    join_date: Schema.Attribute.Date;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::tfi-author.tfi-author'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    profile_img: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    tfi_blogs: Schema.Attribute.Relation<'oneToMany', 'api::tfi-blog.tfi-blog'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiTfiBlogTfiBlog extends Struct.CollectionTypeSchema {
   collectionName: 'tfi_blogs';
   info: {
@@ -706,8 +741,6 @@ export interface ApiTfiBlogTfiBlog extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    author: Schema.Attribute.String;
-    author_bio: Schema.Attribute.Text;
     content: Schema.Attribute.RichText;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -720,6 +753,10 @@ export interface ApiTfiBlogTfiBlog extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     published: Schema.Attribute.Date;
     publishedAt: Schema.Attribute.DateTime;
+    tfi_author: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::tfi-author.tfi-author'
+    >;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1310,6 +1347,7 @@ declare module '@strapi/strapi' {
       'api::person.person': ApiPersonPerson;
       'api::speaker.speaker': ApiSpeakerSpeaker;
       'api::subtitle.subtitle': ApiSubtitleSubtitle;
+      'api::tfi-author.tfi-author': ApiTfiAuthorTfiAuthor;
       'api::tfi-blog.tfi-blog': ApiTfiBlogTfiBlog;
       'api::the-future.the-future': ApiTheFutureTheFuture;
       'api::word-gloss.word-gloss': ApiWordGlossWordGloss;

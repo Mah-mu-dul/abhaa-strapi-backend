@@ -14,17 +14,17 @@
     "title": {
       "type": "string"
     },
-    "author": {
-      "type": "string"
-    },
-    "author_bio": {
-      "type": "text"
-    },
     "published": {
       "type": "date"
     },
     "content": {
       "type": "richtext"
+    },
+    "tfi_author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::tfi-author.tfi-author",
+      "inversedBy": "tfi_blogs"
     }
   }
 }
